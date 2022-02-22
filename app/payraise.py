@@ -111,7 +111,7 @@ class PayRaise(object):
         target_doc.save(target_name)
 
     def generate_letters(self):
-        logging.info(f"Generating {len(self.data)} letters")
+        logging.info(f"Generating {len(self.data)} letter(s)")
         for employee in self.data:
             employee_data = self.data[employee]
 
