@@ -8,10 +8,10 @@ import os
 import logging
 import shutil
 
-docx_model_name = "templates/STIMIO - Courriers augmentation 2021-22.docx"
 year = "2022"
 target_dir = f"target/{year}"
 raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
+docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{year}.docx"
 
 
 class PayRaise(object):
