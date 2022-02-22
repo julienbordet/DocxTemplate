@@ -39,13 +39,13 @@ class PayRaise(object):
             raise FileNotFoundError
 
         try:
-            self.raise_xslx = openpyxl.load_workbook(xlsx_full_path_name)
+            self.raise_xlsx = openpyxl.load_workbook(xlsx_full_path_name)
         except Exception as e:
             logging.error(f"Unable to open file : '{ xlsx_full_path_name }' -> { e }")
             sys.exit(1)
 
     def get_raise_info(self):
-        sheet = self.raise_xslx.active
+        sheet = self.raise_xlsx.active
         self.data = {}
 
         i = 2

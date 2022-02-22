@@ -42,5 +42,5 @@ cp "templates/$template_core_letter-2021-2022.docx" "templates/$template_core_le
 echo "     Created into templates/$template_core_letter $previous_year-$year"
 
 echo " --> Instancing raise and bonus data"
-cp "templates/$template_core_data-2021-2022.xlsx" "target/$year/$template_core_data-$previous_year-$year.xslx"
+cp "templates/$template_core_data-2021-2022.xlsx" "target/$year/$template_core_data-$previous_year-$year.xlsx"
 echo "     Ready to edit in target/$year/$template_core_data $previous_year-$year"
