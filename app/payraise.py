@@ -7,6 +7,7 @@ from docx.shared import Pt
 import os
 import logging
 import shutil
+import argparse
 
 import config
 
@@ -110,6 +111,7 @@ class PayRaise(object):
         target_doc.save(target_name)
 
     def generate_letters(self):
+        logging.info(f"Generating {len(self.data)} letters")
         for employee in self.data:
             employee_data = self.data[employee]
 
@@ -119,6 +121,13 @@ class PayRaise(object):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", help="increase printed information", action="store_true")
+    args = parser.parse_args()
+
+    if args.verbose:
+        logging.basicConfig(level=logging.INFO)
+
     p = PayRaise(docx_model_name, target_dir)
     p.get_raise_info()
-    p.generate_letters()
+#    p.generate_letters()
