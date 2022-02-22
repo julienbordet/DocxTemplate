@@ -32,7 +32,7 @@ pip3 install -r requirements.txt 2>/dev/null
 echo "##### Creating directory structures and template files"
 
 echo " --> Creating target dir"
-mkdir -p target/$year
+mkdir -p "target/$year"
 
 echo " --> Updating script"
 perl -pi -e "s/2022/$year/g" app/config.py
