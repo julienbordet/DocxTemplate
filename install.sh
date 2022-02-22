@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-template_core_letter="STIMIO - Courriers augmentation"
+template_core_letter="Courriers augmentation"
 template_core_data="Augmentation Primes"
 
 function usage() {
@@ -35,7 +35,7 @@ echo " --> Creating target dir"
 mkdir -p target/$year
 
 echo " --> Updating script"
-perl -pi -e "s/2022/$year/g" app/payraise.py
+perl -pi -e "s/2022/$year/g" app/config.py
 
 echo " --> Instancing template"
 cp "templates/$template_core_letter 2021-2022.docx" "templates/$template_core_letter $previous_year-$year"

@@ -12,7 +12,7 @@ target/
   2022/Augmentation Primes 2021-2022.xlsx         -> the file containing the raises and bonus
 
 template/
-  STIMIO - Courriers augmentation 2021-22.docx    -> the Word model 
+  Courriers augmentation 2021-22.docx    -> the Word model 
 ```
 
 # Installation
@@ -37,15 +37,11 @@ $ mkdir -p target/2023
 ```
 ### Script config
 
-Adapt basic script variables in `payraise.py`, mainly changing the `year` variable to 2023.
+Adapt basic script variables in `config.py`, mainly changing the `year` variable to 2023.
 
 ```python
-[...]
+# 
 year = "2023"
-target_dir = f"target/{year}"
-raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
-docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{year}.docx"
-[...]
 ```
 
 ### Adapt docx template

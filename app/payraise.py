@@ -8,10 +8,11 @@ import os
 import logging
 import shutil
 
-year = "2022"
-target_dir = f"target/{year}"
-raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
-docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{year}.docx"
+import config
+
+target_dir = f"target/{config.year}"
+raise_xlsx_name = f"Augmentation Primes {int(config.year)-1}-{config.year}.xlsx"
+docx_model_name = f"templates/Courriers augmentation {int(config.year)-1}-{config.year}.docx"
 
 
 class PayRaise(object):
@@ -71,7 +72,7 @@ class PayRaise(object):
             i += 1
 
     def generate_letter(self, first_name, name, bonus, payraise):
-        target_name = f"{self.target_dir}/{year} - COURRIER AUGMENTATION - {first_name}-{name}.docx"
+        target_name = f"{self.target_dir}/{config.year} - COURRIER AUGMENTATION - {first_name}-{name}.docx"
         shutil.copy(self.model_name, target_name)
 
         try:
