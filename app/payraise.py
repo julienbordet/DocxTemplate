@@ -20,7 +20,7 @@ class PayRaise(object):
         self.model_name = model_name
 
         if not os.path.isdir(target_dir):
-            logging.error(f"Directory does not exist : {target_dir}")
+            logging.error(f"Directory does not exist : '{target_dir}'")
             raise NotADirectoryError
         self.target_dir = target_dir
         self.setup()
@@ -29,19 +29,19 @@ class PayRaise(object):
         try:
             self.model_doc = docx.Document(self.model_name)
         except Exception as e:
-            logging.error(f"Unable to open file : { self.model_name } -> { e }")
+            logging.error(f"Unable to open file : '{ self.model_name }' -> { e }")
             sys.exit(1)
 
         xlsx_full_path_name = f"{target_dir}/{raise_xlsx_name}"
 
         if not os.path.isfile(xlsx_full_path_name):
-            logging.error(f"xlsx file unavailable : {xlsx_full_path_name}")
+            logging.error(f"xlsx file unavailable : '{xlsx_full_path_name}'")
             raise FileNotFoundError
 
         try:
             self.raise_xslx = openpyxl.load_workbook(xlsx_full_path_name)
         except Exception as e:
-            logging.error(f"Unable to open file : { xlsx_full_path_name } -> { e }")
+            logging.error(f"Unable to open file : '{ xlsx_full_path_name }' -> { e }")
             sys.exit(1)
 
     def get_raise_info(self):
@@ -72,13 +72,13 @@ class PayRaise(object):
             i += 1
 
     def generate_letter(self, first_name, name, bonus, payraise):
-        target_name = f"{self.target_dir}/{config.year} - COURRIER AUGMENTATION - {first_name}-{name}.docx"
+        target_name = f"{self.target_dir}/{config.year}-COURRIER-AUGMENTATION-{first_name}-{name}.docx"
         shutil.copy(self.model_name, target_name)
 
         try:
             target_doc = docx.Document(target_name)
         except Exception as e:
-            logging.error(f"Unable to open target file : {target_name} -> {e}")
+            logging.error(f"Unable to open target file : '{target_name}' -> {e}")
             sys.exit(1)
 
         style = target_doc.styles['Normal']
