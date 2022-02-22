@@ -9,10 +9,10 @@ app/
 
 target/
   2022/                                           -> one directory for each year
-    Augmentation Primes 2021-2022.xlsx            -> the file containing the raises and bonus
+    Augmentation-Primes-2021-2022.xlsx            -> the file containing the raises and bonus
 
 template/
-  Courriers augmentation 2021-22.docx             -> the Word model 
+  Courriers-augmentation-2021-22.docx             -> the Word model 
 ```
 
 # Installation
