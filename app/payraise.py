@@ -108,6 +108,7 @@ class PayRaise(object):
 
             paragraph.style = target_doc.styles['Normal']
 
+        logging.info(f"Writing {target_name} for {first_name} {name}")
         target_doc.save(target_name)
 
     def generate_letters(self):
@@ -117,12 +118,12 @@ class PayRaise(object):
 
             if employee_data['bonus'] or employee_data['payraise']:
                 self.generate_letter(employee_data['first_name'], employee_data['name'],
-                                       employee_data['bonus'], employee_data['payraise'])
+                                     employee_data['bonus'], employee_data['payraise'])
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-v", "--verbose", help="increase printed information", action="store_true")
+    parser.add_argument("-v", "--verbose", help="print more information", action="store_true")
     args = parser.parse_args()
 
     if args.verbose:
