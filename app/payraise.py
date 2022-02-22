@@ -130,4 +130,4 @@ if __name__ == '__main__':
 
     p = PayRaise(docx_model_name, target_dir)
     p.get_raise_info()
-#    p.generate_letters()
+    p.generate_letters()
