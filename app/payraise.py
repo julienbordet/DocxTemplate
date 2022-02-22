@@ -7,11 +7,13 @@ from docx.shared import Pt
 import os
 import logging
 import shutil
+import argparse
 
-year = "2022"
-target_dir = f"target/{year}"
-raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
-docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{year}.docx"
+import config
+
+target_dir = f"target/{config.year}"
+raise_xlsx_name = f"Augmentation-Primes-{int(config.year)-1}-{config.year}.xlsx"
+docx_model_name = f"templates/Courriers-augmentation-{int(config.year)-1}-{config.year}.docx"
 
 
 class PayRaise(object):
@@ -19,7 +21,7 @@ class PayRaise(object):
         self.model_name = model_name
 
         if not os.path.isdir(target_dir):
-            logging.error(f"Directory does not exist : {target_dir}")
+            logging.error(f"Directory does not exist : '{target_dir}'")
             raise NotADirectoryError
         self.target_dir = target_dir
         self.setup()
@@ -28,23 +30,23 @@ class PayRaise(object):
         try:
             self.model_doc = docx.Document(self.model_name)
         except Exception as e:
-            logging.error(f"Unable to open file : { self.model_name } -> { e }")
+            logging.error(f"Unable to open file : '{ self.model_name }' -> { e }")
             sys.exit(1)
 
         xlsx_full_path_name = f"{target_dir}/{raise_xlsx_name}"
 
         if not os.path.isfile(xlsx_full_path_name):
-            logging.error(f"xlsx file unavailable : {xlsx_full_path_name}")
-            raise FileExistsError
+            logging.error(f"xlsx file unavailable : '{xlsx_full_path_name}'")
+            raise FileNotFoundError
 
         try:
-            self.raise_xslx = openpyxl.load_workbook(xlsx_full_path_name)
+            self.raise_xlsx = openpyxl.load_workbook(xlsx_full_path_name)
         except Exception as e:
-            logging.error(f"Unable to open file : { xlsx_full_path_name } -> { e }")
+            logging.error(f"Unable to open file : '{ xlsx_full_path_name }' -> { e }")
             sys.exit(1)
 
     def get_raise_info(self):
-        sheet = self.raise_xslx.active
+        sheet = self.raise_xlsx.active
         self.data = {}
 
         i = 2
@@ -71,13 +73,13 @@ class PayRaise(object):
             i += 1
 
     def generate_letter(self, first_name, name, bonus, payraise):
-        target_name = f"{self.target_dir}/{year} - COURRIER AUGMENTATION - {first_name}-{name}.docx"
+        target_name = f"{self.target_dir}/{config.year}-COURRIER-AUGMENTATION-{first_name}-{name}.docx"
         shutil.copy(self.model_name, target_name)
 
         try:
             target_doc = docx.Document(target_name)
         except Exception as e:
-            logging.error(f"Unable to open target file : {target_name} -> {e}")
+            logging.error(f"Unable to open target file : '{target_name}' -> {e}")
             sys.exit(1)
 
         style = target_doc.styles['Normal']
@@ -109,6 +111,7 @@ class PayRaise(object):
         target_doc.save(target_name)
 
     def generate_letters(self):
+        logging.info(f"Generating {len(self.data)} letter(s)")
         for employee in self.data:
             employee_data = self.data[employee]
 
@@ -118,6 +121,13 @@ class PayRaise(object):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", help="increase printed information", action="store_true")
+    args = parser.parse_args()
+
+    if args.verbose:
+        logging.basicConfig(level=logging.INFO)
+
     p = PayRaise(docx_model_name, target_dir)
     p.get_raise_info()
     p.generate_letters()
