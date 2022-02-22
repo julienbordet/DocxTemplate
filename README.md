@@ -17,21 +17,23 @@ template/
 
 # Installation
 
+The examples below are for year 2023. Adapt depending on the year
+
 ## Directory structure
 
 ```shell
-$ mkdir -p target/2022
+$ mkdir -p target/2023
 ```
 ## Script config
 
-Adapt basic script variables in `payraise.py`, mainly changing the `year` variable.
+Adapt basic script variables in `payraise.py`, mainly changing the `year` variable to 2023.
 
 ```python
 [...]
-docx_model_name = "templates/STIMIO - Courriers augmentation 2021-22.docx"
-year = "2022"
+year = "2023"
 target_dir = f"target/{year}"
 raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
+docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{year}.docx"
 [...]
 ```
 
@@ -40,9 +42,9 @@ raise_xlsx_name = f"Augmentation Primes {int(year)-1}-{year}.xlsx"
 In `template/`, adapt the model file, while being careful to change its name to reflect the year (for instance, in 2023 it should end by `2022-2023.docx`).
 
 ## Edit raises and bonus
-Copy `template/Augmentation Primes 2021-2022.xlsx` into `target/2022` (while changing the year in both in name of the Excel file and the directory, to be
+Copy `template/Augmentation Primes 2022-2023.xlsx` into `target/2023` (while changing the year in both in name of the Excel file and the directory, to be
 coherent with the `year` variable above.
 
-Edit the new `template/Augmentation Primes 2021-2022.xlsx` file while respecting the column. 
+Edit the new `template/Augmentation Primes 2022-2023.xlsx` file while respecting the column titles.
 
-Warning : raise value should be *integers*.
+**Warning** : `raise` values should be *integers*.
