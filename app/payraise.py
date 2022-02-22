@@ -11,8 +11,8 @@ import shutil
 import config
 
 target_dir = f"target/{config.year}"
-raise_xlsx_name = f"Augmentation Primes {int(config.year)-1}-{config.year}.xlsx"
-docx_model_name = f"templates/Courriers augmentation {int(config.year)-1}-{config.year}.docx"
+raise_xlsx_name = f"Augmentation-Primes-{int(config.year)-1}-{config.year}.xlsx"
+docx_model_name = f"templates/Courriers-augmentation-{int(config.year)-1}-{config.year}.docx"
 
 
 class PayRaise(object):
@@ -36,7 +36,7 @@ class PayRaise(object):
 
         if not os.path.isfile(xlsx_full_path_name):
             logging.error(f"xlsx file unavailable : {xlsx_full_path_name}")
-            raise FileExistsError
+            raise FileNotFoundError
 
         try:
             self.raise_xslx = openpyxl.load_workbook(xlsx_full_path_name)

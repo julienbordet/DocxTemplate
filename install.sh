@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-template_core_letter="Courriers augmentation"
-template_core_data="Augmentation Primes"
+template_core_letter="Courriers-augmentation"
+template_core_data="Augmentation-Primes"
 
 function usage() {
   echo "$0 year"
@@ -38,9 +38,9 @@ echo " --> Updating script"
 perl -pi -e "s/2022/$year/g" app/config.py
 
 echo " --> Instancing template"
-cp "templates/$template_core_letter 2021-2022.docx" "templates/$template_core_letter $previous_year-$year.docx"
+cp "templates/$template_core_letter-2021-2022.docx" "templates/$template_core_letter-$previous_year-$year.docx"
 echo "     Created into templates/$template_core_letter $previous_year-$year"
 
 echo " --> Instancing raise and bonus data"
-cp "templates/$template_core_data 2021-2022.xlsx" "target/$year/$template_core_data $previous_year-$year.xslx"
+cp "templates/$template_core_data-2021-2022.xlsx" "target/$year/$template_core_data-$previous_year-$year.xslx"
 echo "     Ready to edit in target/$year/$template_core_data $previous_year-$year"
