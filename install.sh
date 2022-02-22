@@ -38,9 +38,17 @@ echo " --> Updating script"
 perl -pi -e "s/2022/$year/g" app/config.py
 
 echo " --> Instancing template"
-cp "templates/$template_core_letter-2021-2022.docx" "templates/$template_core_letter-$previous_year-$year.docx"
+target_docx="templates/$template_core_letter-$previous_year-$year.docx"
+cp "templates/$template_core_letter-2021-2022.docx" "$target_docx"
 echo "     Created into templates/$template_core_letter $previous_year-$year"
 
 echo " --> Instancing raise and bonus data"
-cp "templates/$template_core_data-2021-2022.xlsx" "target/$year/$template_core_data-$previous_year-$year.xlsx"
-echo "     Ready to edit in target/$year/$template_core_data $previous_year-$year"
+target_xlsx="target/$year/$template_core_data-$previous_year-$year.xlsx"
+cp "templates/$template_core_data-2021-2022.xlsx" "$target_xlsx"
+
+echo ""
+echo "Now edit $target_xlsx to configure raises and bonuses "
+echo "and $target_docx to setup letter model"
+echo ""
+echo "then go back to base directory and launch"
+echo "  python3 app/payraise.py"
