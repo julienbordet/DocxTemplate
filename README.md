@@ -19,12 +19,23 @@ template/
 
 The examples below are for year 2023. Adapt depending on the year
 
-## Directory structure
+## install.sh
+
+Simply launch
+
+```
+$ chmod u+x install.sh
+$ ./install.sh 2023
+```
+
+
+## Manual way (don't do it) 
+### Directory structure
 
 ```shell
 $ mkdir -p target/2023
 ```
-## Script config
+### Script config
 
 Adapt basic script variables in `payraise.py`, mainly changing the `year` variable to 2023.
 
@@ -37,11 +48,11 @@ docx_model_name = f"templates/STIMIO - Courriers augmentation {int(year)-1}-{yea
 [...]
 ```
 
-## Adapt docx template
+### Adapt docx template
 
 In `template/`, adapt the model file, while being careful to change its name to reflect the year (for instance, in 2023 it should end by `2022-2023.docx`).
 
-## Edit raises and bonus
+### Edit raises and bonus
 Copy `template/Augmentation Primes 2022-2023.xlsx` into `target/2023` (while changing the year in both in name of the Excel file and the directory, to be
 coherent with the `year` variable above.
 

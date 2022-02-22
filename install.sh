@@ -15,6 +15,8 @@ if [ "$1" == "" ]; then
 fi
 
 year=$1
+previous_year=$((year - 1))
+
 
 if [ ! -d ./venv ]; then
   echo "##### Setting up virtualenv #####"
@@ -32,9 +34,10 @@ echo "##### Creating directory structures and template files"
 echo " --> Creating target dir"
 mkdir -p target/$year
 
-echo " --> Instancing template"
-previous_year=$((year - 1))
+echo " --> Updating script"
+perl -pi -e "s/2022/$year/g" app/payraise.py
 
+echo " --> Instancing template"
 cp "templates/$template_core_letter 2021-2022.docx" "templates/$template_core_letter $previous_year-$year"
 echo "     Created into templates/$template_core_letter $previous_year-$year"
 
