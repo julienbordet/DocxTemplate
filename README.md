@@ -1,5 +1,4 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/julienbordet/DocxTemplate)](https://github.com/julienbordet/DocxTemplate/releases)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/julienbordet/DocxTemplate)
+![Tests](https://github.com/julienbordet/DocxTemplate/actions/workflows/tests.yml/badge.svg)
 
 # DocxTemplate
 Simple Python script to generate word documents from an Excel file.
