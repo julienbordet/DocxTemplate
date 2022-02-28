@@ -121,10 +121,10 @@ class DocxTemplate(object):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('directory', help="target directory for generated files")
-    parser.add_argument('xlsx_data', help="Excel data file")
-    parser.add_argument('template', help="Docx template")
+    parser.add_argument('xlsx_data', help="excel data file")
+    parser.add_argument('template', help="docx template")
     parser.add_argument('-prefix', help="prefix for generated files")
-    parser.add_argument("-v", help="print more information", action="count")
+    parser.add_argument("-v", help="verbose mode (-vv for more)", action="count")
     args = parser.parse_args()
 
     if args.v == 1:
