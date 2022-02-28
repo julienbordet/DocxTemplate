@@ -31,7 +31,7 @@ $ python app/docxtemplate.py target/2022 target/2022/raises.xlsx template/letter
 * `target/2022/data.xlsx` is the excel file containing the core data
 * `template/letter.docx` is the model docx file
 
-For an exemple of ``data.xlsx`` file, have a look at `/template/Data-Example.xlsx`
+For an exemple of ``data.xlsx`` file, have a look at `template/Data-Example.xlsx`
 
 ## Docx template format
 
@@ -44,12 +44,3 @@ The '.xlsx' file should contains :
 * the different values
 
 **Note** : each first column value should be unique.
-
-# Installation
-
-Simply launch
-
-```
-$ chmod u+x install.sh
-$ ./install.sh
-```
