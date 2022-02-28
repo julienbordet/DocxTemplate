@@ -130,5 +130,5 @@ dmypy.json
 
 target
 ~*
-tests/test_target/*
+tests/test_target/*.docx
 
