@@ -1,5 +1,5 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/julienbordet/PayRaise)](https://github.com/julienbordet/MenuPing/releases)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/julienbordet/PayRaise)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/julienbordet/DocxTemplate)](https://github.com/julienbordet/DocxTemplate/releases)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/julienbordet/DocxTemplate)
 
 # DocxTemplate
 Simple Python script to generate word documents from an Excel file.
@@ -28,8 +28,10 @@ $ python app/docxtemplate.py target/2022 target/2022/raises.xlsx template/letter
 ```
 
 * `target/2022` is the directory in which the docx files will be created
-* `target/2022/raises.xlsx` is the excel file containing the core data
+* `target/2022/data.xlsx` is the excel file containing the core data
 * `template/letter.docx` is the model docx file
+
+For an exemple of ``data.xlsx`` file, have a look at `/template/Data-Example.xlsx`
 
 ## Docx template format
 
