@@ -1,4 +1,3 @@
-import docxtemplate.docxtemplate
 from docxtemplate.docxtemplate import DocxTemplate
 import pytest
 import time
@@ -15,36 +14,36 @@ def test_object_creation():
 
 def test_object_creation_exception():
     with pytest.raises(Exception):
-        dt = DocxTemplate("invalid_file"
-                          "tests/test_data/Data-Example.xlsx",
-                          "tests/test_target",
-                          "")
+        DocxTemplate("invalid_file"
+                     "tests/test_data/Data-Example.xlsx",
+                     "tests/test_target",
+                     "")
 
-        dt = DocxTemplate("tests/test_data/Letter-template.docx",
-                          "invalid_file"
-                          "tests/test_target",
-                          "")
+        DocxTemplate("tests/test_data/Letter-template.docx",
+                     "invalid_file"
+                     "tests/test_target",
+                     "")
 
-        dt = DocxTemplate("tests/test_data/Letter-template.docx",
-                          "tests/test_data/Data-Example.xlsx",
-                          "invalid_file"
-                          "")
+        DocxTemplate("tests/test_data/Letter-template.docx",
+                     "tests/test_data/Data-Example.xlsx",
+                     "invalid_file"
+                     "")
 
 
 def test_object_creation_invalid_xlsx():
     with pytest.raises(Exception):
-        dt = DocxTemplate("tests/test_data/Letter-template.docx",
-                          "tests/test_data/Fake-Data-Example.xlsx",
-                          "tests/test_target",
-                          "")
+        DocxTemplate("tests/test_data/Letter-template.docx",
+                     "tests/test_data/Fake-Data-Example.xlsx",
+                     "tests/test_target",
+                     "")
 
 
 def test_object_creation_invalid_docx():
     with pytest.raises(Exception):
-        dt = DocxTemplate("tests/test_data/Fake-Letter-template.docx",
-                          "tests/test_data/Data-Example.xlsx",
-                          "tests/test_target",
-                          "")
+        DocxTemplate("tests/test_data/Fake-Letter-template.docx",
+                     "tests/test_data/Data-Example.xlsx",
+                     "tests/test_target",
+                     "")
 
 
 def test_real_data_load_validation():
