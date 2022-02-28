@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 
 target
+~*
+tests/test_target/*
 
