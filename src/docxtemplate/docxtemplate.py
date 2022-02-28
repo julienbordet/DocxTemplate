@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import sys
 
+import sys
 import openpyxl
 import docx
 from docx.shared import Pt
@@ -28,19 +28,14 @@ class DocxTemplate(object):
             self.model_doc = docx.Document(self.model_name)
         except Exception as e:
             logging.error(f"Unable to open file : '{ self.model_name }' -> { e }")
-            sys.exit(1)
+            raise ModuleNotFoundError
 
         # Open Excel data file
-
         if not os.path.isfile(self.xlsx_name):
             logging.error(f"xlsx file unavailable : '{self.xlsx_name}'")
             raise FileNotFoundError
 
-        try:
-            self.data_xlsx = openpyxl.load_workbook(self.xlsx_name)
-        except Exception as e:
-            logging.error(f"Unable to open file : '{ self.xlsx_name }' -> { e }")
-            sys.exit(1)
+        self.data_xlsx = openpyxl.load_workbook(self.xlsx_name)
 
     def get_info(self):
         sheet = self.data_xlsx.active
@@ -74,9 +69,11 @@ class DocxTemplate(object):
 
             i += 1
 
-    def generate_docx(self, key, item_data):
+    def generate_docx(self, key):
         target_name = f"{self.target_dir}/{self.prefix}-{key}.docx"
         shutil.copy(self.model_name, target_name)
+
+        item_data = self.data[key]
 
         try:
             target_doc = docx.Document(target_name)
@@ -105,6 +102,8 @@ class DocxTemplate(object):
         logging.info(f"Writing {target_name} for {key}")
         target_doc.save(target_name)
 
+        return target_name
+
     def generate_docs(self):
         if not self.data:
             logging.error("Generating letters but not data from template")
@@ -113,9 +112,7 @@ class DocxTemplate(object):
         logging.info(f"Generating {len(self.data)} letter(s)")
 
         for item_key in self.data:
-            item_data = self.data[item_key]
-
-            self.generate_docx(item_key, item_data)
+            self.generate_docx(item_key)
 
 
 if __name__ == '__main__':
