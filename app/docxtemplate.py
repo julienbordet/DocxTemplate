@@ -48,7 +48,7 @@ class DocxTemplate(object):
 
         # Check for relevant columns
         j = 1
-        columns = [ "" ]
+        columns = [""]
         while sheet.cell(row=1, column=j).value is not None:
             columns.append(sheet.cell(row=1, column=j).value)
             j += 1
@@ -59,10 +59,11 @@ class DocxTemplate(object):
 
             key = sheet.cell(row=i, column=1).value
             if key in data.keys():
-                logging.error("Some rows in the Excel file have the same keys. Make sure first column values are unique")
+                logging.error("Some rows in the Excel file have the same keys. "
+                              "Make sure first column values are unique")
                 sys.exit(1)
 
-            for col in range(1,j):
+            for col in range(1, j):
                 v = sheet.cell(row=i, column=col).value
                 if v is not None:
                     data[columns[col]] = str(v)
@@ -133,7 +134,7 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.DEBUG)
 
     if not args.prefix:
-        p = re.compile('.*/(.*)\..+')
+        p = re.compile(r'.*/(.*)\..+')
         prefix = p.match(args.template).group(1)
     else:
         prefix = args.prefix
