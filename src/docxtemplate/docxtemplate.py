@@ -9,6 +9,7 @@ import logging
 import shutil
 import argparse
 import re
+from ._version import __version__
 
 
 class DocxTemplate(object):
@@ -122,6 +123,7 @@ if __name__ == '__main__':
     parser.add_argument('template', help="docx template")
     parser.add_argument('-prefix', help="prefix for generated files")
     parser.add_argument("-v", help="verbose mode (-vv for more)", action="count")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     args = parser.parse_args()
 
     if args.v == 1:
@@ -132,7 +134,9 @@ if __name__ == '__main__':
 
     if not args.prefix:
         p = re.compile(r'.*/(.*)\..+')
-        prefix = p.match(args.template).group(1)
+        potential_match = p.match(args.template)
+        if potential_match:
+            args.prefix = potential_match.group(1)
     else:
         prefix = args.prefix
 
