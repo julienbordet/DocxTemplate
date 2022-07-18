@@ -3,7 +3,7 @@
 # DocxTemplate
 Simple Python script to generate word documents from an Excel file.
 
-Current version : 0.1.2
+Current version : 0.1.3
 
 # Install
 
