@@ -3,10 +3,20 @@
 # DocxTemplate
 Simple Python script to generate word documents from an Excel file.
 
+Current version : 0.1.1
+
+# Install
+
+```
+$ git https://github.com/julienbordet/DocxTemplate.git
+$ cd docxtemplate
+$ pip install .
+```
+
 # Help
 
 ```
-$ python app/docxtemplate.py -h
+$ docxtemplate -h
 usage: docxtemplate.py [-h] [-prefix PREFIX] [-v] directory xlsx_data template
 
 positional arguments:
@@ -18,12 +28,13 @@ optional arguments:
   -h, --help      show this help message and exit
   -prefix PREFIX  prefix for generated files
   -v              verbose mode (-vv for more)
+  --version       show program's version number and exit
 ```
 
-# Exemple usage
+# Example usage
 
 ```
-$ python app/docxtemplate.py target/2022 target/2022/raises.xlsx template/letter.docx
+$ docxtemplate target/2022 target/2022/raises.xlsx template/letter.docx
 ```
 
 * `target/2022` is the directory in which the docx files will be created
@@ -34,7 +45,7 @@ For an exemple of ``data.xlsx`` file, have a look at `template/Data-Example.xlsx
 
 ## Docx template format
 
-Use '***variable_name***' to insert into the template docx the value of the *variable_name* column from the Excel file.
+Use `***variable_name***` to insert into the template docx the value of the *variable_name* column from the Excel file.
 
 ## Edit variable in Excel file
 

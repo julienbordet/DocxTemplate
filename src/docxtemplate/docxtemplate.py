@@ -9,7 +9,7 @@ import logging
 import shutil
 import argparse
 import re
-from ._version import __version__
+from docxtemplate._version import __version__
 
 
 class DocxTemplate(object):
@@ -116,7 +116,7 @@ class DocxTemplate(object):
             self.generate_docx(item_key)
 
 
-if __name__ == '__main__':
+def main_function():
     parser = argparse.ArgumentParser()
     parser.add_argument('directory', help="target directory for generated files")
     parser.add_argument('xlsx_data', help="excel data file")
@@ -143,3 +143,7 @@ if __name__ == '__main__':
     dt = DocxTemplate(args.template, args.xlsx_data, args.directory, prefix)
     dt.get_info()
     dt.generate_docs()
+
+
+if __name__ == '__main__':
+    main_function()
